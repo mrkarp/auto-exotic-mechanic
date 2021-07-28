@@ -1,0 +1,72 @@
+<nav class="navbar navbar-expand-lg navbar-info bg-info">
+    <div class="container-fluid">
+
+        <a class="navbar-brand" href="#">
+            <img class="text-white" src="../../assets/images/ae-tree.svg" />
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+        <div class="collapse navbar-collapse text-white">
+            <h2>Auto Exotic Service Calculator</h2>
+        </div>
+    </div>
+</nav>
+<div class="row">
+    <div class="row">
+        <div class="col">
+            <h5>Customer Total: {{serviceTotal}}</h5>
+        </div>
+        <div class="col">
+            <h5>Materials:
+                <div *ngFor="let material of serviceMaterials">
+                    <span class="badge bg-secondary">{{material.name}} 
+                    <span *ngIf="material.amount > 1">x {{material.amount}}</span>
+                    </span>
+                </div>
+            </h5>
+        </div>
+        <div class="col">
+            <h5>Profit: {{serviceProfit}}</h5>
+        </div>
+        <div class="col">
+            <button class="p-3 btn btn-outline-danger text-white w-100" (click)="reset()">
+            Reset
+        </button>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row py-2 lists-container">
+        <!-- Service Options -->
+        <div class="col h-100 options-container text-center text-white">
+            <h1>Services</h1>
+            <div *ngFor="let servicesGroup of servicesGroups" class="text-center">
+                <h5 class="p-3" title="{{servicesGroup.name}}">
+                    {{servicesGroup.name}}
+                </h5>
+                <div id="servicesList" class="dragula-container">
+                    <div *ngFor="let service of servicesGroup.services" class="m-2">
+                        <button class="p-1 btn btn-outline-secondary text-white w-100" (click)="addService(service)">
+                        {{service.name}} | {{service.customerCost}}
+                    </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Purchase List -->
+        <div class="col text-white text-center h-100 options-container ">
+            <div id="purchasedList" class="">
+                <div *ngFor="let service of purchasedServices " class="m-1">
+                    <button class="p-1 btn btn-outline-danger text-white w-100" (click)="removeService(service)">
+                    {{service.name}}
+                </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Actions -->
+
+</div>

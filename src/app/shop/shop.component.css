@@ -1,0 +1,8 @@
+.options-container {
+    overflow: scroll;
+}
+
+.lists-container {
+    height: 80vh !important;
+    overflow: hidden;
+}
